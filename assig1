@@ -7,3 +7,9 @@ var name = "Gajender Singh"
 console.log(name)
 var name = "Sudha Devi"
 console.log(name)
+
+
+var name = "Shivam Attri";
+var age = 23;
+console.log(name, age)
+console.log(typeof(name), typeof(age))
