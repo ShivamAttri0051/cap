@@ -13,3 +13,18 @@ var name = "Shivam Attri";
 var age = 23;
 console.log(name, age)
 console.log(typeof(name), typeof(age))
+
+
+console.log("             ********* Result *********             ")
+console.log(" ")
+console.log("Name: Shivam Attri")
+console.log("Grade: 10th")
+console.log("Section: B")
+console.log("Roll No.: 51")
+console.log(" ")
+console.log("---------------------------------------------------")
+console.log(" ")
+console.log("Maths: 98")
+console.log("Science: 95")
+console.log("English: 36")
+console.log("Hindi: 80")
