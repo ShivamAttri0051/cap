@@ -1,2 +1,9 @@
 console.log("Masai School")
 console.log("A Transformation in Educaton")
+
+var name = "Shivam";
+console.log(name)
+var name = "Gajender Singh"
+console.log(name)
+var name = "Sudha Devi"
+console.log(name)
