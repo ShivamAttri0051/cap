@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai Application
+    </title>
+</head>
+<body>
+    <h1>Masai School Application</h1>
+    <p>Enter Your name and gender to apply for masai school</p>
+    <h2 id="display">Display entered name and gender here</h2>
+    <hr>
+    <input type="text" id ="name" placeholder="Enter your name">
+    <select name="select gender" value="Select gender" id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Others">Others</option>
+    </select>
+    <button onclick="show()">Apply</button>
+    <h1 id="messege" ></h1>
+</body>
+ <script>
+    let int = document.getElementById("name")
+    sel = document.getElementById("gender")
+    heading=document.getElementById("messege")
+    // if(int.innerText==null){
+    //     alert("please enter your name")
+    // }
+    // else if(sel.innerText==null){
+    //     alert("sleect your gender")
+    // }
+    function show()
+    {
+        heading.innerText="Apply sucessful"
+    }
+
+
+ </script>
+</html>
+
