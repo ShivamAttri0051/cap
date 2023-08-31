@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Quote</title>
+  <title>Document</title>
 </head>
 <body>
-    <button  onclick="show()">Show Quote in console</button>
-    <p id="quote" ></p>
+  <h1>This example demonstrates how we can change text content when clicking on button</h1>
+  <hr>
+  <h1 id="display">Click on Login to continue</h1>
+  <button onClick="login()">Login</button>
+  <button onClick="logout()">Logout</button>
 </body>
-<script>
-    let heading = document.getElementById("quote")
-    function show()
-    {
-        heading.innerText="Talk is cheap Show me the code"
-        
-    }
-</script>
 </html>
+<script>
+    let heading = document.getElementById("display")
+  function login() {
+    heading.innerText="Login sucess"
+  }
+
+  function logout() {
+    heading.innerText="Logout Sucessfull"
+  }
+</script>
