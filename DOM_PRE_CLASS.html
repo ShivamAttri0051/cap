@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>warning</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <button onclick="warn()" id="btn">submit</button>
+    <h1 id="alt"></h1>
+</body>
+<script>
+    let a = document.getElementById("inp")
+    let b = document.getElementById('alt')
+    function warn()
+    {
+        b.innerText="Entered value:"+ a.innerText
+    }
+</script>
+</html>
