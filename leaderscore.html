@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Leaderboard</h1>
+        <div id="score-box"></div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="appendToScore(1)">1</button>
+            <button class="number-button" onclick="appendToScore(2)">2</button>
+            <button class="number-button" onclick="appendToScore(3)">3 </button>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="appendToScore(4)">4</button>
+            <button class="number-button" onclick="appendToScore(5)">5</button>
+            <button class="number-button" onclick="appendToScore(6)">6</button>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="appendToScore(7)">7</button>
+            <button class="number-button" onclick="appendToScore(8)">8</button>
+            <button class="number-button" onclick="appendToScore(9)">9</button>
+        </div>
+        <div class="number-buttons">
+            <button class="number-button" onclick="appendToScore(0)">0</button>
+            <button class="number-button" onclick="clearScore()">C</button>
+        </div>
+        <button id="enter-button" onclick="updateMinMax()">ENTER</button>
+        <div id="min-box">MIN: 0</div>
+        <div id="max-box">MAX: 0</div>
+    </div>
+
+    <script>
+        let score = "";
+        let minScore = Infinity;
+        let maxScore = -Infinity;
+
+        function appendToScore(num) {
+            score += num;
+            document.getElementById("score-box").textContent = score;
+        }
+
