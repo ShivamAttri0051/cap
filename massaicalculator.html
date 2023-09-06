@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" value="Enter first no." id="first_no">
+    <input type="number" value="Enter second no." id="sec_no">
+    <button id="add" onclick="addon()">Add</button>
+    <button id="sub" onclick="addon()">Subtract</button>
+    <button id="multi" onclick="addon()">multiple</button>
+    <button id="div" onclick="addon()">Divison</button>
+</body>
+<script>
+    function addon()
+    {
+        let a=document.getElementById("first_no")
+        let b=document.getElementById("sec_no")
+        if(id=="add"){
+            console.log(a.innerText+b.innerText)
+        }
+        else if(id=="sub"){
+            console.log(a.innerText-b.innerText)
+        }
+        else if(id=="multi"){
+            console.log(a.innerText*b.innerText)
+        }
+        else if(id=="div"){
+            console.log(a.innerText/b.innerText)
+        }
+    }
+</script>
+</html>
