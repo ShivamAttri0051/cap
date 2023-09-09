@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <style>
+        h1{
+            border: 1px solid red;
+        }
+    </style> -->
 </head>
+
 <body>
     <h1 id="display"></h1>
     <div class="keypad">
@@ -19,42 +26,68 @@
         <button>9</button>
         <button>0</button>
     </div>
-    <div class="oprator">
+    <div class="operator">
         <button>+</button>
         <button>-</button>
-        <button >*</button>
+        <button>*</button>
         <button>/</button>
     </div>
-    
+
     <button id="equal">=</button>
 </body>
 <script>
     let keypadButton = document.querySelectorAll(".keypad > button");
-    let heading = document.getElementById("display")
-    let firstNumber=""
-    let secondNumber=""
-    let Isfirstnumber=true
-    let operators = document.querySelector(".oprator < button")
-    for(i=0; i<keypadButton.length; i++){
-        keypadButton[i].addEventListener("click",function(){
-            if(Isfirstnumber==true){
-                firstNumber += keypadButton[i].innerText
-                heading.innerText=firstNumber
-            }
-            else{
-                secondNumber += keypadButton[i]
-                heading.innerText=secondNumber
-            }
-        })
-    
+    let heading = document.getElementById("display");
+    let operators = document.querySelectorAll(".operator > button")
+    let equal = document.getElementById("equal");
+    let firstNumber = "";
+    let secondNumber = "";
+    let currentOperator="";
+    let Isfirstnumber = true;
+    for (let i = 0; i < keypadButton.length; i++) {
+            keypadButton[i].addEventListener("click", function () {
+                if (currentOperator === "") {
+                    firstNumber += keypadButton[i].innerText;
+                    heading.innerText = firstNumber;
+                } else {
+                    secondNumber += keypadButton[i].innerText; 
+                    heading.innerText = secondNumber;
+                }
+            });
+        }
+
+    for (let i = 0; i < operators.length; i++) {
+            operators[i].addEventListener("click", function () {
+                currentOperator = operators[i].innerText;
+            });
     }
-    for(i=0; i<operators.length; i++){
-        oprators=operators[i].innerText
-        Isfirstnumber = false
-    }
-    function calculate(firstNumber, secondNumber, oprators){
-        switch(calculate){
-            case
+    equal.addEventListener("click",function(){
+        if(firstNumber!=="" && secondNumber!=="" && currentOperator!==""){
+            const result = calculate(parseFloat(firstNumber), parseFloat(secondNumber), currentOperator);
+            heading.innerText=result;
+            firstNumber= result;
+            secondNumber="";
+            currentOperator="";
+        }
+    })
+    function calculate(firstNumber, secondNumber, currentOperator) {
+        switch (currentOperator) {
+            case "+":
+                return Number(firstNumber) + Number(secondNumber);
+            case "-":
+                return Number(firstNumber) - Number(secondNumber);
+            case "*":
+                return Number(firstNumber) * Number(secondNumber);
+            case "/":
+                if(secondNumber!==0){
+
+                    return Number(firstNumber) / Number(secondNumber)
+                }
+                else{
+                    return "Error: Division by zero";
+                }
+                defualt :
+                    return "Invalid operator";
         }
 
     }
