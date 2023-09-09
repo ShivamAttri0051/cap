@@ -6,30 +6,58 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="number" value="Enter first no." id="first_no">
-    <input type="number" value="Enter second no." id="sec_no">
-    <button id="add" onclick="addon()">Add</button>
-    <button id="sub" onclick="addon()">Subtract</button>
-    <button id="multi" onclick="addon()">multiple</button>
-    <button id="div" onclick="addon()">Divison</button>
+    <h1 id="display"></h1>
+    <div class="keypad">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>0</button>
+    </div>
+    <div class="oprator">
+        <button>+</button>
+        <button>-</button>
+        <button >*</button>
+        <button>/</button>
+    </div>
+    
+    <button id="equal">=</button>
 </body>
 <script>
-    function addon()
-    {
-        let a=document.getElementById("first_no")
-        let b=document.getElementById("sec_no")
-        if(id=="add"){
-            console.log(a.innerText+b.innerText)
-        }
-        else if(id=="sub"){
-            console.log(a.innerText-b.innerText)
-        }
-        else if(id=="multi"){
-            console.log(a.innerText*b.innerText)
-        }
-        else if(id=="div"){
-            console.log(a.innerText/b.innerText)
-        }
+    let keypadButton = document.querySelectorAll(".keypad > button");
+    let heading = document.getElementById("display")
+    let firstNumber=""
+    let secondNumber=""
+    let Isfirstnumber=true
+    let operators = document.querySelector(".oprator < button")
+    for(i=0; i<keypadButton.length; i++){
+        keypadButton[i].addEventListener("click",function(){
+            if(Isfirstnumber==true){
+                firstNumber += keypadButton[i].innerText
+                heading.innerText=firstNumber
+            }
+            else{
+                secondNumber += keypadButton[i]
+                heading.innerText=secondNumber
+            }
+        })
+    
     }
+    for(i=0; i<operators.length; i++){
+        oprators=operators[i].innerText
+        Isfirstnumber = false
+    }
+    function calculate(firstNumber, secondNumber, oprators){
+        switch(calculate){
+            case
+        }
+
+    }
+
 </script>
 </html>
