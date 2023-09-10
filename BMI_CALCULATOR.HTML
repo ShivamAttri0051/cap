@@ -4,32 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: poppins;
+            color: aliceblue;
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            margin-top: 20%;
+            background-color: black;
+        }
+        button:hover{
+            box-shadow: 0 0 0px cyan, 2px 2px 5px cyan,
+            0 0 0px cyan, 0 0 0px cyan, 0 0 0px cyan;
+
+        }
+        button{
+            box-shadow: 0 0 3px cyan;
+            /* color: cyan; */
+            background-color: cyan;
+            border: 0px;
+            cursor: pointer;
+            border-radius: 5px;
+            
+        }
+        #weight{
+            border: 0px;
+        }
+        #height{
+            border: 0px;
+        }
+    </style>
 </head>
 <body>
-    <input type="number" value="Enter first no." id="first_no">
-    <input type="number" value="Enter second no." id="sec_no">
-    <button id="add" onclick="addon()">Add</button>
-    <button id="sub" onclick="addon()">Subtract</button>
-    <button id="multi" onclick="addon()">multiple</button>
-    <button id="div" onclick="addon()">Divison</button>
+    <div class="container">
+        <h3>Enter your height and weight to check your BMI result</h3>
+        <h3>Put your weight here in (KG)</h3>
+        <input type="text" id="weight">
+        <h3>put your height here in (Mt)</h3>
+        <input type="text" id="height">
+        <br><br>
+        <button id="submit">calculate BMI</button>
+        <h1 id="display" ></h1>
+        <h1 id="display_result"></h1>
+    </div>
+
 </body>
 <script>
-    function addon()
-    {
-        let a=document.getElementById("first_no")
-        let b=document.getElementById("sec_no")
-        if(id=="add"){
-            console.log(a.innerText+b.innerText)
+    let yourWeight = document.getElementById("weight")
+    let yourHeight = document.getElementById("height")
+    let submited = document.getElementById("submit")
+    let heading = document.getElementById("display")
+    
+    submited.addEventListener("click",function(){
+        let Height = Number(yourHeight.value);
+        let Weight = Number(yourWeight.value);
+        let result = Weight/(Height*Height)
+
+        if(result<=18.5){
+            heading.innerText ="Your BMI : "+result + ". Underweight.";
+            heading.style.color="red"
+
         }
-        else if(id=="sub"){
-            console.log(a.innerText-b.innerText)
+        else if (result >= 18.5 && result <= 24.9){
+            heading.innerText ="Your BMI : "+result + ". Normal weight.";
+            heading.style.color="green"
         }
-        else if(id=="multi"){
-            console.log(a.innerText*b.innerText)
+        else if (result >= 25 && result <= 29.9){
+            heading.innerText ="Your BMI : "+result + ". Ovverweight.";
+            heading.style.color="Yellow"
+
         }
-        else if(id=="div"){
-            console.log(a.innerText/b.innerText)
+        else if (result >= 30){
+            heading.innerText ="Your BMI : "+result + ". Obese.";
+            heading.style.color="red"
+
         }
-    }
+        
+    })
 </script>
 </html>
