@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function vehcile(brand, model, speed, fueltype){
+    this.brand=brand;
+    this.model=model;
+    this.speed=speed;
+    this.fueltype=fueltype;
+}
+vehcile.prototype.accelerate=function(){
+    console.log(`The vehcile is accelerated.`)
+}
+vehcile.prototype.breake=function(){
+    console.log("The vehcile is breaking.")
+}
+vehcile.prototype.refuel=function(){
+    console.log("The vehcile is refueling.")
+}
+function car(brand, model, speed, fueltype, noofwheels){
+    vehcile.call(this, brand, model, speed, fueltype)
+    this.noofwheels=noofwheels
+}
+car.prototype.honk=function(){
+    console.log(`Car horn is blown!`);
+}
+Object.setPrototypeOf(car.prototype, vehcile.prototype)
+
+function airoplane(brand, model, speed, fueltype, noofwheels, noOfEngines, landingGear){
+    car.call(this, brand, model, speed, fueltype, noofwheels)
+    this.noOfEngines=noOfEngines;
+    this.landingGear=landingGear;
+}
+airoplane.prototype.takeoff=function(){
+    console.log("Airoplane has takeoff.")
+}
+Object.setPrototypeOf(airoplane.prototype, car.prototype, vehcile.prototype)
+// let vehcile1= new vehcile("Tata", "Punch", 120, "Petrol");
+// console.log(vehcile1)
+// let vehcile2= new vehcile("Tata", "Punch", 120, "Petrol");
+// console.log(vehcile2)
+// let car1 = new car("Tata", "Nexon", 120, "Petrol", 4)
+// console.log(car1)
+// console.log(car1.accelerate());
+let airoplane1 = new airoplane("Airbus", "M150", 720, "disel", 12, 2, true)
+console.log(airoplane1)
+console.log(airoplane1.takeoff())
+</script>
+</html>
