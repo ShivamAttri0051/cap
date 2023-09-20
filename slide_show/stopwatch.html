@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #stopwatch {
+            font-size: 36px;
+        }
+        button {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stopwatch</h1>
+    <div id="stopwatch">00:00</div>
+    <button id="startBtn">Start</button>
+    <button id="pauseBtn" disabled>Pause</button>
+    <button id="resetBtn" disabled>Reset</button>
+
+    <script>
+        let startTime = 0;
+        let intervalId;
+        let isRunning = false;
+
+        const stopwatch = document.getElementById('stopwatch');
+        const startBtn = document.getElementById('startBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        function updateStopwatch() {
+            const currentTime = new Date().getTime();
+            const elapsedTime = currentTime - startTime;
+            const minutes = Math.floor((elapsedTime / 1000 / 60) % 60);
+            const hours = Math.floor(elapsedTime / 1000 / 3600);
+
+            const formattedTime = `${hours > 0 ? hours.toString().padStart(2, '0') + ':' : ''}${minutes.toString().padStart(2, '0')}:${(elapsedTime / 1000 % 60).toFixed(2).padStart(5, '0')}`;
+            stopwatch.textContent = formattedTime;
+        }
+
+        startBtn.addEventListener('click', () => {
+            if (!isRunning) {
+                startTime = new Date().getTime() - (startTime ? startTime : 0);
+                intervalId = setInterval(updateStopwatch, 10);
+                isRunning = true;
+                startBtn.disabled = true;
+                pauseBtn.disabled = false;
+                resetBtn.disabled = false;
+            }
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            if (isRunning) {
+                clearInterval(intervalId);
+                isRunning = false;
+                startBtn.disabled = false;
+                pauseBtn.disabled = true;
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            clearInterval(intervalId);
+            isRunning = false;
+            startTime = 0;
+            updateStopwatch();
+            startBtn.disabled = false;
+            pauseBtn.disabled = true;
+            resetBtn.disabled = true;
+        });
+    </script>
+</body>
+</html>
