@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #userDataContainer {
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .user-card {
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .user-avatar {
+            max-width: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="fetchUsersButton">Fetch Users</button>
+    <div id="userDataContainer" class="hidden"></div>
+</body>
+    <script>
+        const fetchUsersButton = document.getElementById('fetchUsersButton');
+        const userDataContainer = document.getElementById('userDataContainer');
+
+        fetchUsersButton.addEventListener('click', () => {
+            fetch('https://reqres.in/api/users')
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    displayUserData(data.data);
+                })
+                .catch((error) => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        });
+
+        function displayUserData(users) {
+            userDataContainer.innerHTML = '';
+            users.forEach((user) => {
+                const userCard = document.createElement('div');
+                userCard.classList.add('user-card');
+                const userAvatar = document.createElement('img');
+                userAvatar.classList.add('user-avatar');
+                userAvatar.src = user.avatar;
+                const userName = document.createElement('p');
+                userName.textContent = `Name: ${user.first_name} ${user.last_name}`;
+                const userEmail = document.createElement('p');
+                userEmail.textContent = `Email: ${user.email}`;
+                userCard.appendChild(userAvatar);
+                userCard.appendChild(userName);
+                userCard.appendChild(userEmail);
+                userDataContainer.appendChild(userCard);
+            });
+
+            userDataContainer.classList.remove('hidden');
+        }
+
+    </script>
+
+</html>
