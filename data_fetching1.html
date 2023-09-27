@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+</head>
+<body>
+    <div class="container">
+        <h1>User Information</h1>
+        <form id="userForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+        
+        <button id="displayData">Display Stored Data</button>
+        
+        <div id="dataDisplay">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const userForm = document.getElementById('userForm');
+    const displayDataButton = document.getElementById('displayData');
+    const dataDisplay = document.getElementById('dataDisplay');
+
+    userForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const age = document.getElementById('age').value;
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userAge', age);
+        userForm.reset();
+    });
+
+    displayDataButton.addEventListener('click', function () {
+        const storedName = localStorage.getItem('userName');
+        const storedAge = localStorage.getItem('userAge');
+
+        if (storedName && storedAge) {
+            dataDisplay.innerHTML = 
+            `
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>${storedName}</td>
+                        <td>${storedAge}</td>
+                    </tr>
+                </table>`;
+        } else {
+            dataDisplay.innerHTML = 'No data stored.';
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
